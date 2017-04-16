@@ -1,0 +1,11 @@
+D:\MarkedPoints\src\MarkedPoints\bin\Debug\MarkedPoints.exe.config
+D:\MarkedPoints\src\MarkedPoints\bin\Debug\MarkedPoints.exe
+D:\MarkedPoints\src\MarkedPoints\bin\Debug\MarkedPoints.pdb
+D:\MarkedPoints\src\MarkedPoints\bin\Debug\MathCore.dll
+D:\MarkedPoints\src\MarkedPoints\bin\Debug\MathCore.pdb
+D:\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.csprojResolveAssemblyReference.cache
+D:\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.Form1.resources
+D:\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.Properties.Resources.resources
+D:\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.csproj.GenerateResource.Cache
+D:\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.exe
+D:\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.pdb

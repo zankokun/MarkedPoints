@@ -1,0 +1,5 @@
+D:\MarkedPoints\src\MathCore\bin\Debug\MathCore.dll
+D:\MarkedPoints\src\MathCore\bin\Debug\MathCore.pdb
+D:\MarkedPoints\src\MathCore\obj\Debug\MathCore.dll
+D:\MarkedPoints\src\MathCore\obj\Debug\MathCore.pdb
+D:\MarkedPoints\src\MathCore\obj\Debug\MathCore.csprojResolveAssemblyReference.cache

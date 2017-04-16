@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkedPoints", "MarkedPoints.csproj", "{D9E6E8A2-4306-4E7A-B4AC-396DF4B36097}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathCore", "..\MathCore\MathCore.csproj", "{34786001-5048-4831-9A72-EAB86264EB3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{2BA653B6-5F5D-45F0-BCA7-143299893F55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9E6E8A2-4306-4E7A-B4AC-396DF4B36097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9E6E8A2-4306-4E7A-B4AC-396DF4B36097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9E6E8A2-4306-4E7A-B4AC-396DF4B36097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9E6E8A2-4306-4E7A-B4AC-396DF4B36097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34786001-5048-4831-9A72-EAB86264EB3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34786001-5048-4831-9A72-EAB86264EB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34786001-5048-4831-9A72-EAB86264EB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34786001-5048-4831-9A72-EAB86264EB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BA653B6-5F5D-45F0-BCA7-143299893F55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BA653B6-5F5D-45F0-BCA7-143299893F55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BA653B6-5F5D-45F0-BCA7-143299893F55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BA653B6-5F5D-45F0-BCA7-143299893F55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

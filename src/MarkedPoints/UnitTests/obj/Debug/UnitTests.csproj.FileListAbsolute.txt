@@ -1,0 +1,8 @@
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\UnitTests.dll
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\UnitTests.pdb
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\MathCore.dll
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\MathCore.pdb
+D:\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
+D:\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.dll
+D:\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.pdb
