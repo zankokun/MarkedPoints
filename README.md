@@ -10,6 +10,6 @@ The repository contais the implementation of marked points method for solving op
 ...
 
 ## Team
-ElizJogar	- Елизавета Пронина
-Lyubimcevd	- Дмитрий Любимцев
-zankokun	- Динар Каримов
+- ElizJogar		- Елизавета Пронина
+- Lyubimcevd	- Дмитрий Любимцев
+- zankokun		- Динар Каримов

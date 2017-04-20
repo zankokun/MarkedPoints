@@ -6,3 +6,13 @@ D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\MathCore.pdb
 D:\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
 D:\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.dll
 D:\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.pdb
+C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\UnitTests.dll
+C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\UnitTests.pdb
+C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\MathCore.dll
+C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\MathCore.pdb
+C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
+C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.dll
+C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.pdb
+C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\Z.Expressions.Eval.dll

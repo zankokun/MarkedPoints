@@ -17,4 +17,9 @@ namespace MathCore
         List<IPoint> GetPoints();
         void Remove(IPoint p);
     }
+
+    public interface IFunction
+    {
+        double GetValue(IPoint p);
+    }
 }

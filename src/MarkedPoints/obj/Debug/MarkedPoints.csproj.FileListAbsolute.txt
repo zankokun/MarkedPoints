@@ -9,3 +9,15 @@ D:\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.Properties.Resources.res
 D:\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.csproj.GenerateResource.Cache
 D:\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.exe
 D:\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.pdb
+C:\Dinar\MarkedPoints\src\MarkedPoints\bin\Debug\MarkedPoints.exe.config
+C:\Dinar\MarkedPoints\src\MarkedPoints\bin\Debug\MarkedPoints.exe
+C:\Dinar\MarkedPoints\src\MarkedPoints\bin\Debug\MarkedPoints.pdb
+C:\Dinar\MarkedPoints\src\MarkedPoints\bin\Debug\MathCore.dll
+C:\Dinar\MarkedPoints\src\MarkedPoints\bin\Debug\MathCore.pdb
+C:\Dinar\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.csprojResolveAssemblyReference.cache
+C:\Dinar\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.Form1.resources
+C:\Dinar\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.Properties.Resources.resources
+C:\Dinar\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.csproj.GenerateResource.Cache
+C:\Dinar\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.exe
+C:\Dinar\MarkedPoints\src\MarkedPoints\obj\Debug\MarkedPoints.pdb
+C:\Dinar\MarkedPoints\src\MarkedPoints\bin\Debug\Z.Expressions.Eval.dll

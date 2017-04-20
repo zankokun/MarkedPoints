@@ -13,7 +13,6 @@ namespace MathCore
         public Grid(List<Tuple<double,double>> limitations, int blocks)
         {
             points = new List<IPoint>();
-            int t =0;
             for (int k = 0; k < blocks*blocks; ++k)
             {
                 List<double> point_on_axis = new List<double>();
