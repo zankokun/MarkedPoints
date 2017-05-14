@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MathCore;
 using MathNet.Symbolics;
-using Expr = MathNet.Symbolics.Expression;
 
 namespace UnitTests
 {
@@ -19,12 +18,14 @@ namespace UnitTests
         [TestMethod]
         public void FunctionTest_PasreAndEval()
         {
-            var symbols = new Dictionary<string, FloatingPoint>
-             {{ "X1", 2.0 },
-             { "X2", 2.0 },
-              { "X3", 2.0 }};
-
-            Assert.AreEqual(0.125, Evaluate.Evaluate(symbols, Infix.ParseOrUndefined("1/(X1*X2*X3)")).RealValue);
+            var symbols = new Dictionary<string,  FloatingPoint>
+             {{ "X1", 2d },
+             { "X2", 2d },
+              { "X3", 2d }};
+            string function = "1/(X1*X2*X3)";
+            IFunction func = new MathCore.Function(function,3);
+            //проеряем, что результат вычисления функции и реализации из библиотеки совпадают
+            Assert.AreEqual(func.GetValue(new Point(new List<double> { 2d,2d,2d})), Evaluate.Evaluate(symbols, Infix.ParseOrUndefined(function)).RealValue);
             
         }
     }
