@@ -16,3 +16,16 @@ C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.csprojResol
 C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.dll
 C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\obj\Debug\UnitTests.pdb
 C:\Dinar\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\Z.Expressions.Eval.dll
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\UnitTests.dll.config
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\FParsec.dll
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\FParsecCS.dll
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\FSharp.Core.dll
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\MathNet.Numerics.dll
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\MathNet.Numerics.FSharp.dll
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\MathNet.Symbolics.dll
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\FParsec.xml
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\FParsecCS.xml
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\FSharp.Core.xml
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\MathNet.Numerics.xml
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\MathNet.Numerics.FSharp.xml
+D:\MarkedPoints\src\MarkedPoints\UnitTests\bin\Debug\MathNet.Symbolics.xml

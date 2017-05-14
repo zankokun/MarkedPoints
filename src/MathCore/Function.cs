@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Z.Expressions;
+using MathNet.Symbolics;
+
 namespace MathCore
 {
     public class Function : IFunction
@@ -17,12 +18,12 @@ namespace MathCore
         }
         public double GetValue(IPoint p)
         {
-            var values = new Dictionary<string, object>();
-            for (int i=0;i<dimentions;++i)
+           Dictionary<string, FloatingPoint> values = new Dictionary<string, FloatingPoint>();
+            for (int i = 0; i < dimentions; ++i)
             {
                 values.Add("X" + (i+1).ToString(), p.GetPointOnAxis(i));
             }
-            return Eval.Execute<double>(function_string, values);
+            return Evaluate.Evaluate(values, Infix.ParseOrUndefined(function_string)).RealValue;
         }
     }
 }

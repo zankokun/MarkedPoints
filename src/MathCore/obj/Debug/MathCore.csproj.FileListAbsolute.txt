@@ -9,3 +9,16 @@ C:\Dinar\MarkedPoints\src\MathCore\obj\Debug\MathCore.csprojResolveAssemblyRefer
 C:\Dinar\MarkedPoints\src\MathCore\obj\Debug\MathCore.dll
 C:\Dinar\MarkedPoints\src\MathCore\obj\Debug\MathCore.pdb
 C:\Dinar\MarkedPoints\src\MathCore\bin\Debug\Z.Expressions.Eval.dll
+D:\MarkedPoints\src\MathCore\bin\Debug\MathCore.dll.config
+D:\MarkedPoints\src\MathCore\bin\Debug\FParsec.dll
+D:\MarkedPoints\src\MathCore\bin\Debug\FParsecCS.dll
+D:\MarkedPoints\src\MathCore\bin\Debug\FSharp.Core.dll
+D:\MarkedPoints\src\MathCore\bin\Debug\MathNet.Numerics.dll
+D:\MarkedPoints\src\MathCore\bin\Debug\MathNet.Numerics.FSharp.dll
+D:\MarkedPoints\src\MathCore\bin\Debug\MathNet.Symbolics.dll
+D:\MarkedPoints\src\MathCore\bin\Debug\FParsec.xml
+D:\MarkedPoints\src\MathCore\bin\Debug\FParsecCS.xml
+D:\MarkedPoints\src\MathCore\bin\Debug\FSharp.Core.xml
+D:\MarkedPoints\src\MathCore\bin\Debug\MathNet.Numerics.xml
+D:\MarkedPoints\src\MathCore\bin\Debug\MathNet.Numerics.FSharp.xml
+D:\MarkedPoints\src\MathCore\bin\Debug\MathNet.Symbolics.xml

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MathCore;
 
 namespace MarkedPoints
 {
@@ -22,5 +23,35 @@ namespace MarkedPoints
 
         }
 
+        private void optimizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string[] function_strings = tb_Critetions.Lines;
+            string[] bounders = tb_Bounders.Lines;
+
+            //размерность 
+            int N = 0; //пока не проверим все ограничения, не знаем скольки размерная задача
+            //количество блоков разбиения
+            int blocks = Int32.Parse(tb_num_of_blocks.Text);
+
+            //создаem сетку
+            List<Tuple<double, double>> limitations = new List<Tuple<double, double>>();
+            string[] temp;
+            foreach (string str in bounders)
+            {
+                if (str == "") continue; // если есть пустые строки ограничений, не берем их в расчёт
+                temp = str.Split(' ');
+                limitations.Add(new Tuple<double, double>(double.Parse(temp.First<string>()), double.Parse(temp.Last<string>())));
+                ++N;
+            }
+            IGrid grid = new Grid(limitations, blocks);
+
+
+            //создали функции
+            List<IFunction> functions = new List<IFunction>();
+            foreach (string str in function_strings)
+                functions.Add(new Function(str, N));
+
+            //здесь - инициализация, запуск и обработка результатов алгоритма алгоритма
+        }
     }
 }
