@@ -50,8 +50,10 @@ namespace MarkedPoints
             List<IFunction> functions = new List<IFunction>();
             foreach (string str in function_strings)
                 functions.Add(new Function(str, N));
-
             //здесь - инициализация, запуск и обработка результатов алгоритма алгоритма
+            //points - лист точек
+            Algorthm Alg = new Algorthm(functions, points);
+            Alg.DoAlgorithm();
         }
     }
 }

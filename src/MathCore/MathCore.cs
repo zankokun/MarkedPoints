@@ -10,6 +10,8 @@ namespace MathCore
     {
         double GetPointOnAxis(int i);
         bool NearTo(IPoint p);
+        List<double> Results { get; }
+        bool Mark { get; set; }
     }
 
     public interface IGrid
