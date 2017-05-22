@@ -39,7 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.resultsTextBox = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tb_num_of_blocks = new System.Windows.Forms.ToolStripTextBox();
@@ -103,7 +103,7 @@
             this.tb_Critetions.Name = "tb_Critetions";
             this.tb_Critetions.Size = new System.Drawing.Size(311, 160);
             this.tb_Critetions.TabIndex = 1;
-            this.tb_Critetions.Text = "X1+X2+X3\r\nX1*X1+X*X2+X3*X3";
+            this.tb_Critetions.Text = "X1+X2+X3\r\nX1*X1+X2*X2+X3*X3";
             // 
             // tb_Bounders
             // 
@@ -142,14 +142,14 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Results";
             // 
-            // textBox1
+            // resultsTextBox
             // 
-            this.textBox1.AccessibleName = "tb_results";
-            this.textBox1.Location = new System.Drawing.Point(329, 63);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(383, 516);
-            this.textBox1.TabIndex = 6;
+            this.resultsTextBox.AccessibleName = "tb_results";
+            this.resultsTextBox.Location = new System.Drawing.Point(329, 63);
+            this.resultsTextBox.Multiline = true;
+            this.resultsTextBox.Name = "resultsTextBox";
+            this.resultsTextBox.Size = new System.Drawing.Size(383, 516);
+            this.resultsTextBox.TabIndex = 6;
             // 
             // toolStrip1
             // 
@@ -188,7 +188,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(731, 591);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.resultsTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -220,7 +220,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox resultsTextBox;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripTextBox tb_num_of_blocks;

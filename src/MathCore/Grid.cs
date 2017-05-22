@@ -18,7 +18,10 @@ namespace MathCore
 
         List<IPoint> points;
         int pointsCount;
-      
+
+        List<List<double>> coordinates;
+
+
         public Grid(List<AxisRange> limitations, int blocksCount)
         {
             this.limitations = limitations;
@@ -30,7 +33,7 @@ namespace MathCore
 
         private void FillPoints()
         {
-            List<List<double>> coordinates = new List<List<double>>();
+            coordinates = new List<List<double>>();
             for (int i = 0; i < limitations.Count; ++i)
             {
                 coordinates.Add(new List<double>((int)pointsCount));
@@ -54,26 +57,24 @@ namespace MathCore
 
           for(int i = 0; i < pointsCount; ++i)
             {
-                points.Add(new Point(GetRandomVector(coordinates)));
+                points.Add(new Point(GetRandomVector()));
             }
         }
 
-        private List<double> GetRandomVector(List<List<double>> coordinates)
+        private List<double> GetRandomVector()
         {
             var rand = new Random();
-
-            const double UsedCoordinate = Double.NaN;
 
             List<double> vector = new List<double>();
             for (int i = 0; i < limitations.Count; ++i)
             {
                 var index = rand.Next(pointsCount);
-                while (coordinates[i][index] == UsedCoordinate)
+                while (Double.IsNaN(coordinates[i][index]))
                 {
                     index = rand.Next(pointsCount);
                 }
                 vector.Add(coordinates[i][index]);
-                coordinates[i][index] = UsedCoordinate;
+                coordinates[i][index] = Double.NaN;
             }
             return vector;
         }

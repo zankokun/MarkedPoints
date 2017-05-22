@@ -36,13 +36,13 @@ namespace MathCore
                     if (kolvo_b == 0)
                     {
                         points.RemoveAt(i);
-                        i--;
+                        if (i > 0)  i--;  //TO DO: Check Dmitry  
                     }
                     if (kolvo_m == 0)
                     {
                         points.Remove(current_point);
                         current_point = points[i];
-                        i--;
+                        if (i > 0)  i--;  //TO DO: Check Dmitry
                     }
                 }
                 current_point.Mark = true;

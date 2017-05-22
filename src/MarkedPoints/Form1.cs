@@ -53,7 +53,18 @@ namespace MarkedPoints
             //здесь - инициализация, запуск и обработка результатов алгоритма алгоритма
             //points - лист точек
             Algorthm Alg = new Algorthm(functions, grid.GetPoints());
-            Alg.DoAlgorithm();
+            var points = Alg.DoAlgorithm();
+
+            resultsTextBox.Clear();
+            foreach (var point in points)
+            {
+                resultsTextBox.Text += "Point: (";
+                foreach (var res in point.Results)
+                {
+                    resultsTextBox.Text += " " + res.ToString();
+                }
+                resultsTextBox.Text += " ) \n\n";
+            }
         }
     }
 }
