@@ -14,14 +14,30 @@ namespace MathCore
 
     public class Grid : IGrid
     {
+        List<AxisRange> limitations;
+        int blocksCount;
+
         List<IPoint> points;
+        int pointsCount;
       
         public Grid(List<AxisRange> limitations, int blocksCount)
         {
-            double pointsCount = Math.Pow(blocksCount, limitations.Count);
+            this.limitations = limitations;
+            this.blocksCount = blocksCount;
+            this.pointsCount = (int)Math.Pow(blocksCount, limitations.Count);
 
             points = new List<IPoint>();
-         
+            FillPoints();
+        }
+
+        private void FillPoints()
+        {
+            List<List<double>> coordinates = new List<List<double>>();
+            for (int i = 0; i < limitations.Count; ++i)
+            {
+                coordinates.Add(new List<double>((int)pointsCount));
+            }
+
             for (int i = 0; i < pointsCount; ++i)
             {
                 List<double> pointOnAxis = new List<double>();
@@ -34,10 +50,31 @@ namespace MathCore
                         limitations[j].Second :
                         limitations[j].First + step * (i + 1);
 
-                    pointOnAxis.Add((firstVerge + lastVerge) / 2);
+                    coordinates[j].Add((firstVerge + lastVerge) / 2);
                 }
-                points.Add(new Point(pointOnAxis));
             }
+
+          for(int i = 0; i < pointsCount; i++)
+            {
+                points.Add(new Point(GetRandomVector(coordinates)));
+            }
+        }
+
+        private List<double> GetRandomVector(List<List<double>> coordinates)
+        {
+            var rand = new Random();
+            List<double> vector = new List<double>();
+            for (int i = 0; i < limitations.Count; i++)
+            {
+                var index = rand.Next(pointsCount);
+                while (coordinates[i][index] == -1)
+                {
+                    index = rand.Next(pointsCount);
+                }
+                vector.Add(coordinates[i][index]);
+                coordinates[i][index] = -1;
+            }
+            return vector;
         }
 
         public List<IPoint> GetPoints()
