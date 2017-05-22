@@ -16,6 +16,9 @@ namespace MarkedPoints
         public Form1()
         {
             InitializeComponent();
+            tb_Critetions.Text = "(X1-9)*(X1-9)-2"+ Environment.NewLine + "6-(1/2)*X1";
+            tb_Bounders.Text = "0 16";
+            tb_num_of_blocks.Text = "5";
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,14 +59,15 @@ namespace MarkedPoints
             var points = Alg.DoAlgorithm();
 
             resultsTextBox.Clear();
-            foreach (var point in points)
+            foreach (IPoint point in points)
             {
                 resultsTextBox.Text += "Point: (";
-                foreach (var res in point.Results)
+                for (int i = 0; i < N; i++)
                 {
-                    resultsTextBox.Text += " " + res.ToString();
+                    resultsTextBox.Text += point.GetPointOnAxis(i);
+                    if (i + 1 < N) resultsTextBox.Text += ";";
                 }
-                resultsTextBox.Text += " ) \n\n";
+                resultsTextBox.Text += ")" + Environment.NewLine;
             }
         }
     }

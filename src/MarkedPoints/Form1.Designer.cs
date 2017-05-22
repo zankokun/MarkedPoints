@@ -103,7 +103,6 @@
             this.tb_Critetions.Name = "tb_Critetions";
             this.tb_Critetions.Size = new System.Drawing.Size(311, 160);
             this.tb_Critetions.TabIndex = 1;
-            this.tb_Critetions.Text = "X1+X2+X3\r\nX1*X1+X2*X2+X3*X3";
             // 
             // tb_Bounders
             // 
@@ -113,7 +112,6 @@
             this.tb_Bounders.Name = "tb_Bounders";
             this.tb_Bounders.Size = new System.Drawing.Size(311, 337);
             this.tb_Bounders.TabIndex = 2;
-            this.tb_Bounders.Text = "0 1\r\n0 2\r\n0 3";
             // 
             // label1
             // 
@@ -174,7 +172,6 @@
             this.tb_num_of_blocks.AccessibleName = "tb_num_of_blocks";
             this.tb_num_of_blocks.Name = "tb_num_of_blocks";
             this.tb_num_of_blocks.Size = new System.Drawing.Size(100, 25);
-            this.tb_num_of_blocks.Text = "10";
             this.tb_num_of_blocks.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // toolStripSeparator1
