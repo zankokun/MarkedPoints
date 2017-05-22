@@ -15,7 +15,7 @@ namespace MathCore
     public class Block
     {
         public List<AxisRange> AxisRanges { get; private set; }
-        public IPoint Point { get;  private set; }
+        public IPoint Point { get; private set; }
 
         public Block(List<AxisRange> axisRanges, IPoint point)
         {
@@ -46,12 +46,15 @@ namespace MathCore
         List<Block> blocks;
         List<IPoint> pointsFromBlocks;
 
-        public Grid(List<AxisRange> limitations, int blocksCount)
+        bool createBlocks;
+
+        public Grid(List<AxisRange> limitations, int blocksCount, bool createBlocks = false)
         {
             this.limitations = limitations;
             this.blocksCount = blocksCount;
-            pointsCount = (int)Math.Pow(blocksCount, limitations.Count);;
-            FillBlocks();
+            pointsCount = (int)Math.Pow(blocksCount, limitations.Count);
+            this.createBlocks = createBlocks;
+            FillBlocksAndPoints();
         }
 
         private void FillCoordinates()
@@ -79,25 +82,22 @@ namespace MathCore
             }
         }
 
-        private void FillBlocks()
+        private void FillBlocksAndPoints()
         {
             FillCoordinates();
-            blocks = new List<Block>();
+            if (createBlocks) blocks = new List<Block>();
             pointsFromBlocks = new List<IPoint>();
             List<AxisRange> values = new List<AxisRange>();
-           InternalFillBlocks(0, 0, ref values);
+            InternalFillBlocksAndPoints(0, 0, ref values);
         }
 
-        private void InternalFillBlocks(int axisIndex, int pointIndex, ref List<AxisRange> values)
+        private void InternalFillBlocksAndPoints(int axisIndex, int pointIndex, ref List<AxisRange> values)
         {
             if (axisIndex > limitations.Count - 1)
             {
-                var copyValues = new List<AxisRange>();
-                foreach (var val in values) copyValues.Add(val);
-
                 var vector = new List<double>();
                 var rand = new Random();
-                for(int i = 0; i < limitations.Count; i++)
+                for (int i = 0; i < limitations.Count; i++)
                 {
                     int index = rand.Next(pointsCount);
                     while (Double.IsNaN(coordinates[i][index]) ||
@@ -110,7 +110,12 @@ namespace MathCore
                     coordinates[i][index] = Double.NaN;
                 }
                 var newPoint = new Point(vector);
-                 blocks.Add(new Block(copyValues, newPoint));
+                if (createBlocks)
+                {
+                    var copyValues = new List<AxisRange>();
+                    foreach (var val in values) copyValues.Add(val);
+                    blocks.Add(new Block(copyValues, newPoint));
+                }
                 pointsFromBlocks.Add(newPoint);
                 return;
             }
@@ -127,7 +132,7 @@ namespace MathCore
                     limitations[axisIndex].First + step * (i + 1);
 
                 values.Add(new AxisRange(firstVerge, lastVerge));
-                InternalFillBlocks(axisIndex + 1, pointIndex + i * factor, ref values);
+                InternalFillBlocksAndPoints(axisIndex + 1, pointIndex + i * factor, ref values);
                 values.RemoveAt(values.Count - 1);
             }
         }

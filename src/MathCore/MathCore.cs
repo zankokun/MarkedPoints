@@ -16,6 +16,7 @@ namespace MathCore
 
     public interface IGrid
     {
+        List<Block> GetBlocks();
         List<IPoint> GetPoints();
     }
 

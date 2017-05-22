@@ -47,7 +47,7 @@ namespace UnitTests
                new AxisRange(0, 1)
             };
 
-            IGrid grid = new Grid(limitations, blocksCount);
+            IGrid grid = new Grid(limitations, blocksCount, true);
 
             var points = grid.GetPoints();
 
@@ -62,6 +62,18 @@ namespace UnitTests
                 for (int j = i + 1; j < pointsCount; ++j)
                 {
                     Assert.IsFalse(grid.GetBlocks()[i].Equals(grid.GetBlocks()[j]));
+                }
+            }
+
+            //Проверяем, что точка принаджелит блоку
+            for (int i = 0; i < pointsCount; ++i)
+            {
+                var point = grid.GetBlocks()[i].Point;
+                var axisRanges = grid.GetBlocks()[i].AxisRanges;
+                for (int j = 0; j < axisRanges.Count; ++j)
+                {
+                    Assert.IsTrue(axisRanges[j].First <= point.GetPointOnAxis(j) &&
+                        axisRanges[j].Second >= point.GetPointOnAxis(j));
                 }
             }
         }
