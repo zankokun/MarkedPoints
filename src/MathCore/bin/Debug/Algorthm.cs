@@ -25,24 +25,27 @@ namespace MathCore
             IPoint current_point = points[0];
             while (true)
             {
-                for (int i = 1; i < points.Count; i++)
+                for (int i = 0; i < points.Count; i++)
                 {
                     int kolvo_b = 0, kolvo_m = 0;
-                    for (int j = 0; j < current_point.Results.Count; j++)
+                    if (current_point != points[i])
                     {
-                        if (current_point.Results[j] < points[i].Results[j]) kolvo_m++;
-                        if (current_point.Results[j] > points[i].Results[j]) kolvo_b++;
-                    }
-                    if (kolvo_b == 0)
-                    {
-                        points.RemoveAt(i);
-                        i--;
-                    }
-                    if (kolvo_m == 0)
-                    {
-                        points.Remove(current_point);
-                        current_point = points[i];
-                        i--;
+                        for (int j = 0; j < current_point.Results.Count; j++)
+                        {
+                            if (current_point.Results[j] < points[i].Results[j]) kolvo_m++;
+                            if (current_point.Results[j] > points[i].Results[j]) kolvo_b++;
+                        }
+                        if (kolvo_b == 0)
+                        {
+                            points.RemoveAt(i);
+                            i--;
+                        }
+                        if (kolvo_m == 0)
+                        {
+                            points.Remove(current_point);
+                            i--;
+                            current_point = points[i];
+                        }
                     }
                 }
                 current_point.Mark = true;

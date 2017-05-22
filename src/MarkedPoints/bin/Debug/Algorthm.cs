@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MathCore;
 
-namespace Method_of_mark_point
+namespace MathCore
 {
-    class Algorthm
+    public class Algorthm
     {
         List<IFunction> functions;
         List<IPoint> points;
@@ -16,7 +16,7 @@ namespace Method_of_mark_point
             functions = pfunc;
             points = ppoints;
         }
-        public void DoAlgorithm()
+        public List<IPoint> DoAlgorithm()
         {
             foreach (IPoint point in points)
                 foreach (IFunction func in functions)
@@ -25,24 +25,27 @@ namespace Method_of_mark_point
             IPoint current_point = points[0];
             while (true)
             {
-                for (int i = 1; i < points.Count; i++)
+                for (int i = 0; i < points.Count; i++)
                 {
                     int kolvo_b = 0, kolvo_m = 0;
-                    for (int j = 0; j < current_point.Results.Count; j++)
+                    if (current_point != points[i])
                     {
-                        if (current_point.Results[j] < points[i].Results[j]) kolvo_m++;
-                        if (current_point.Results[j] > points[i].Results[j]) kolvo_b++;
-                    }
-                    if (kolvo_b == 0)
-                    {
-                        points.RemoveAt(i);
-                        i--;
-                    }
-                    if (kolvo_m == 0)
-                    {
-                        points.Remove(current_point);
-                        current_point = points[i];
-                        i--;
+                        for (int j = 0; j < current_point.Results.Count; j++)
+                        {
+                            if (current_point.Results[j] < points[i].Results[j]) kolvo_m++;
+                            if (current_point.Results[j] > points[i].Results[j]) kolvo_b++;
+                        }
+                        if (kolvo_b == 0)
+                        {
+                            points.RemoveAt(i);
+                            i--;
+                        }
+                        if (kolvo_m == 0)
+                        {
+                            points.Remove(current_point);
+                            i--;
+                            current_point = points[i];
+                        }
                     }
                 }
                 current_point.Mark = true;
@@ -56,6 +59,7 @@ namespace Method_of_mark_point
                     }
                 if (!IsMark) break;
             }
+            return points;
         }
     }
 }
