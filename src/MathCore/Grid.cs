@@ -14,34 +14,13 @@ namespace MathCore
 
     public class Block
     {
-        public List<AxisRange> AxisRanges { get; set; }
-        private IPoint point;
+        public List<AxisRange> AxisRanges { get; private set; }
+        public IPoint Point { get;  private set; }
 
-        public Block()
+        public Block(List<AxisRange> axisRanges, IPoint point)
         {
-            AxisRanges = new List<AxisRange>();
-            point = null;
-        }
-
-        public bool TrySetPoint(IPoint point)
-        {
-            if (this.point != null) return false;
-
-            for (int i = 0; i < AxisRanges.Count; i++)
-            {
-                if (point.GetPointOnAxis(i) > AxisRanges[i].Second &&
-                    point.GetPointOnAxis(i) < AxisRanges[i].First)
-                {
-                    return false;
-                }
-            }
-            this.point = point;
-            return true;
-        }
-
-        public bool Empty()
-        {
-            return point == null;
+            AxisRanges = axisRanges;
+            Point = point;
         }
 
         public bool Equals(Block other)
@@ -60,23 +39,19 @@ namespace MathCore
     {
         List<AxisRange> limitations;
 
-        List<IPoint> points;
         int pointsCount;
         int blocksCount;
 
-        bool fromDifferentBlocks;
-
         List<List<double>> coordinates;
         List<Block> blocks;
+        List<IPoint> pointsFromBlocks;
 
-        public Grid(List<AxisRange> limitations, int blocksCount, bool fromDifferentBlocks = true)
+        public Grid(List<AxisRange> limitations, int blocksCount)
         {
             this.limitations = limitations;
             this.blocksCount = blocksCount;
-            pointsCount = (int)Math.Pow(blocksCount, limitations.Count);
-            this.fromDifferentBlocks = fromDifferentBlocks;
-            points = new List<IPoint>();
-            FillPoints();
+            pointsCount = (int)Math.Pow(blocksCount, limitations.Count);;
+            FillBlocks();
         }
 
         private void FillCoordinates()
@@ -106,21 +81,37 @@ namespace MathCore
 
         private void FillBlocks()
         {
+            FillCoordinates();
             blocks = new List<Block>();
-            var FakeRange = new AxisRange(0d, 0d);
-            for (int i = 0; i < pointsCount; ++i)
-            {
-                blocks.Add(new Block());
-            }
+            pointsFromBlocks = new List<IPoint>();
             List<AxisRange> values = new List<AxisRange>();
-            internalFillBlocks(0, 0, ref values);
+           InternalFillBlocks(0, 0, ref values);
         }
 
-        private void internalFillBlocks(int axisIndex, int pointIndex, ref List<AxisRange> values)
+        private void InternalFillBlocks(int axisIndex, int pointIndex, ref List<AxisRange> values)
         {
             if (axisIndex > limitations.Count - 1)
             {
-                foreach (var val in values) blocks[pointIndex].AxisRanges.Add(val);
+                var copyValues = new List<AxisRange>();
+                foreach (var val in values) copyValues.Add(val);
+
+                var vector = new List<double>();
+                var rand = new Random();
+                for(int i = 0; i < limitations.Count; i++)
+                {
+                    int index = rand.Next(pointsCount);
+                    while (Double.IsNaN(coordinates[i][index]) ||
+                        values[i].First > coordinates[i][index] ||
+                        values[i].Second < coordinates[i][index])
+                    {
+                        index = rand.Next(pointsCount);
+                    }
+                    vector.Add(coordinates[i][index]);
+                    coordinates[i][index] = Double.NaN;
+                }
+                var newPoint = new Point(vector);
+                 blocks.Add(new Block(copyValues, newPoint));
+                pointsFromBlocks.Add(newPoint);
                 return;
             }
 
@@ -136,76 +127,14 @@ namespace MathCore
                     limitations[axisIndex].First + step * (i + 1);
 
                 values.Add(new AxisRange(firstVerge, lastVerge));
-                internalFillBlocks(axisIndex + 1, pointIndex + i * factor, ref values);
+                InternalFillBlocks(axisIndex + 1, pointIndex + i * factor, ref values);
                 values.RemoveAt(values.Count - 1);
             }
         }
 
-        private bool TrySetPointInBlock(IPoint point)
-        {
-            for (int i = 0; i < pointsCount; i++)
-            {
-                if (blocks[i].TrySetPoint(point)) return true;
-            }
-            return false;
-        }
-
-        private void FillPoints()
-        {
-            FillCoordinates();
-            if (fromDifferentBlocks) FillBlocks();
-            for (int i = 0; i < pointsCount; ++i)
-            {
-                points.Add(fromDifferentBlocks ? GetRandomPointFromBlock() : GetRandomPoint());
-            }
-        }
-
-        private IPoint GetRandomPoint()
-        {
-            var rand = new Random();
-
-            List<double> vector = new List<double>();
-            for (int i = 0; i < limitations.Count; ++i)
-            {
-                var index = rand.Next(pointsCount);
-                while (Double.IsNaN(coordinates[i][index]))
-                {
-                    index = rand.Next(pointsCount);
-                }
-                vector.Add(coordinates[i][index]);
-                coordinates[i][index] = Double.NaN;
-            }
-            return new Point(vector);
-        }
-
-        private IPoint GetRandomPointFromBlock()
-        {
-            var rand = new Random();
-
-            List<double> vector = new List<double>();
-            do
-            {
-                for (int i = 0; i < limitations.Count; ++i)
-                {
-                    var index = rand.Next(pointsCount);
-                    while (Double.IsNaN(coordinates[i][index]))
-                    {
-                        index = rand.Next(pointsCount);
-                    }
-                    vector.Add(coordinates[i][index]);
-                }
-            }
-            while (!TrySetPointInBlock(new Point(vector)));
-            for (int i = 0; i < limitations.Count; ++i)
-            {
-                coordinates[i][coordinates[i].IndexOf(vector[i])] = Double.NaN;
-            }
-            return new Point(vector);
-        }
-
         public List<IPoint> GetPoints()
         {
-            return points;
+            return pointsFromBlocks;
         }
 
         public List<Block> GetBlocks()

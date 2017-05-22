@@ -47,17 +47,14 @@ namespace UnitTests
                new AxisRange(0, 1)
             };
 
-            IGrid grid = new Grid(limitations, blocksCount, true);
+            IGrid grid = new Grid(limitations, blocksCount);
+
+            var points = grid.GetPoints();
+
             var pointsCount = Math.Pow(blocksCount, limitations.Count);
 
             //Проверяем количество созданных блоков
             Assert.AreEqual(grid.GetBlocks().Count, pointsCount);
-
-            //Проверяем, что каждый блок содержит свою точку
-            for (int i = 0; i < pointsCount; ++i)
-            {
-                Assert.IsFalse(grid.GetBlocks()[i].Empty());
-            }
 
             //Проверяем, что каждый блок уникален
             for (int i = 0; i < pointsCount - 1; ++i)
@@ -67,7 +64,6 @@ namespace UnitTests
                     Assert.IsFalse(grid.GetBlocks()[i].Equals(grid.GetBlocks()[j]));
                 }
             }
-            var points = grid.GetPoints();
         }
     }
 }
