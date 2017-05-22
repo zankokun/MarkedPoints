@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 namespace UnitTests
 {
-    using Range = Tuple<double, double>;
-
     [TestClass]
     public class GridTests
     {
