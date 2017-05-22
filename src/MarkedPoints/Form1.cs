@@ -34,13 +34,13 @@ namespace MarkedPoints
             int blocks = Int32.Parse(tb_num_of_blocks.Text);
 
             //создаem сетку
-            List<Tuple<double, double>> limitations = new List<Tuple<double, double>>();
+            var limitations = new List<AxisRange>();
             string[] temp;
             foreach (string str in bounders)
             {
                 if (str == "") continue; // если есть пустые строки ограничений, не берем их в расчёт
                 temp = str.Split(' ');
-                limitations.Add(new Tuple<double, double>(double.Parse(temp.First<string>()), double.Parse(temp.Last<string>())));
+                limitations.Add(new AxisRange(double.Parse(temp.First<string>()), double.Parse(temp.Last<string>())));
                 ++N;
             }
             IGrid grid = new Grid(limitations, blocks);
@@ -52,7 +52,7 @@ namespace MarkedPoints
                 functions.Add(new Function(str, N));
             //здесь - инициализация, запуск и обработка результатов алгоритма алгоритма
             //points - лист точек
-            Algorthm Alg = new Algorthm(functions, points);
+            Algorthm Alg = new Algorthm(functions, grid.GetPoints());
             Alg.DoAlgorithm();
         }
     }

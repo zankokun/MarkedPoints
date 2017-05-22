@@ -17,7 +17,6 @@ namespace MathCore
     public interface IGrid
     {
         List<IPoint> GetPoints();
-        void Remove(IPoint p);
     }
 
     public interface IFunction
