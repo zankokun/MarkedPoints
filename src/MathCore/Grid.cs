@@ -15,7 +15,6 @@ namespace MathCore
     public class Grid : IGrid
     {
         List<AxisRange> limitations;
-        int blocksCount;
 
         List<IPoint> points;
         int pointsCount;
@@ -23,7 +22,6 @@ namespace MathCore
         public Grid(List<AxisRange> limitations, int blocksCount)
         {
             this.limitations = limitations;
-            this.blocksCount = blocksCount;
             this.pointsCount = (int)Math.Pow(blocksCount, limitations.Count);
 
             points = new List<IPoint>();
@@ -54,7 +52,7 @@ namespace MathCore
                 }
             }
 
-          for(int i = 0; i < pointsCount; i++)
+          for(int i = 0; i < pointsCount; ++i)
             {
                 points.Add(new Point(GetRandomVector(coordinates)));
             }
@@ -63,16 +61,19 @@ namespace MathCore
         private List<double> GetRandomVector(List<List<double>> coordinates)
         {
             var rand = new Random();
+
+            const double UsedCoordinate = Double.NaN;
+
             List<double> vector = new List<double>();
-            for (int i = 0; i < limitations.Count; i++)
+            for (int i = 0; i < limitations.Count; ++i)
             {
                 var index = rand.Next(pointsCount);
-                while (coordinates[i][index] == -1)
+                while (coordinates[i][index] == UsedCoordinate)
                 {
                     index = rand.Next(pointsCount);
                 }
                 vector.Add(coordinates[i][index]);
-                coordinates[i][index] = -1;
+                coordinates[i][index] = UsedCoordinate;
             }
             return vector;
         }
