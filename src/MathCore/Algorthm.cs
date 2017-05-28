@@ -16,7 +16,7 @@ namespace MathCore
             functions = pfunc;
             points = ppoints;
         }
-        public List<IPoint> DoAlgorithm()
+        public List<IPoint> Run()
         {
             foreach (IPoint point in points)
                 foreach (IFunction func in functions)

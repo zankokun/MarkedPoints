@@ -3,38 +3,6 @@ using System.Collections.Generic;
 
 namespace MathCore
 {
-    public class AxisRange
-    {
-        public double First { get; private set; }
-        public double Second { get; private set; }
-
-        public AxisRange() { }
-        public AxisRange(double first, double second) { First = first; Second = second; }
-    }
-
-    public class Block
-    {
-        public List<AxisRange> AxisRanges { get; private set; }
-        public IPoint Point { get; private set; }
-
-        public Block(List<AxisRange> axisRanges, IPoint point)
-        {
-            AxisRanges = axisRanges;
-            Point = point;
-        }
-
-        public bool Equals(Block other)
-        {
-            for (int i = 0; i < AxisRanges.Count; ++i)
-            {
-                if (AxisRanges[i].First != other.AxisRanges[i].First ||
-                   AxisRanges[i].Second != other.AxisRanges[i].Second)
-                    return false;
-            }
-            return true;
-        }
-    }
-
     public class Grid : IGrid
     {
         List<AxisRange> limitations;
@@ -44,20 +12,29 @@ namespace MathCore
 
         List<List<double>> coordinates;
         List<Block> blocks;
-        List<IPoint> pointsFromBlocks;
+        List<IPoint> blocksPoints;
 
-        bool createBlocks;
-
-        public Grid(List<AxisRange> limitations, int blocksCount, bool createBlocks = false)
+        public Grid(List<AxisRange> limitations, int blocksCount)
         {
             this.limitations = limitations;
             this.blocksCount = blocksCount;
             pointsCount = (int)Math.Pow(blocksCount, limitations.Count);
-            this.createBlocks = createBlocks;
-            FillBlocksAndPoints();
+            FillPoints();
         }
 
-        private void FillCoordinates()
+        private void FillPoints()
+        {
+            FillCoords();
+            blocks = new List<Block>();
+            blocksPoints = new List<IPoint>();
+            FillBlocks(0, new List<AxisRange>());
+            foreach (var block in blocks)
+            {
+                blocksPoints.Add(block.Point);
+            }
+        }
+
+        private void FillCoords()
         {
             coordinates = new List<List<double>>();
             for (int i = 0; i < limitations.Count; ++i)
@@ -82,16 +59,7 @@ namespace MathCore
             }
         }
 
-        private void FillBlocksAndPoints()
-        {
-            FillCoordinates();
-            if (createBlocks) blocks = new List<Block>();
-            pointsFromBlocks = new List<IPoint>();
-            List<AxisRange> values = new List<AxisRange>();
-            InternalFillBlocksAndPoints(0, 0, ref values);
-        }
-
-        private void InternalFillBlocksAndPoints(int axisIndex, int pointIndex, ref List<AxisRange> values)
+        private void FillBlocks(int axisIndex, List<AxisRange> values)
         {
             if (axisIndex > limitations.Count - 1)
             {
@@ -110,17 +78,13 @@ namespace MathCore
                     coordinates[i][index] = Double.NaN;
                 }
                 var newPoint = new Point(vector);
-                if (createBlocks)
-                {
-                    var copyValues = new List<AxisRange>();
-                    foreach (var val in values) copyValues.Add(val);
-                    blocks.Add(new Block(copyValues, newPoint));
-                }
-                pointsFromBlocks.Add(newPoint);
+
+                var copyValues = new List<AxisRange>();
+                foreach (var val in values) copyValues.Add(val);
+                blocks.Add(new Block(copyValues, newPoint));
                 return;
             }
 
-            int factor = (int)Math.Pow(blocksCount, axisIndex);
             for (int i = 0; i < blocksCount; ++i)
             {
                 double step = Math.Abs(limitations[axisIndex].First - limitations[axisIndex].Second) /
@@ -132,14 +96,14 @@ namespace MathCore
                     limitations[axisIndex].First + step * (i + 1);
 
                 values.Add(new AxisRange(firstVerge, lastVerge));
-                InternalFillBlocksAndPoints(axisIndex + 1, pointIndex + i * factor, ref values);
+                FillBlocks(axisIndex + 1, values);
                 values.RemoveAt(values.Count - 1);
             }
         }
 
         public List<IPoint> GetPoints()
         {
-            return pointsFromBlocks;
+            return blocksPoints;
         }
 
         public List<Block> GetBlocks()

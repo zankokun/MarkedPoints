@@ -47,9 +47,7 @@ namespace UnitTests
                new AxisRange(0, 1)
             };
 
-            IGrid grid = new Grid(limitations, blocksCount, true);
-
-            var points = grid.GetPoints();
+            IGrid grid = new Grid(limitations, blocksCount);
 
             var pointsCount = Math.Pow(blocksCount, limitations.Count);
 

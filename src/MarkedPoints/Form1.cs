@@ -46,17 +46,13 @@ namespace MarkedPoints
                 limitations.Add(new AxisRange(double.Parse(temp.First<string>()), double.Parse(temp.Last<string>())));
                 ++N;
             }
-            IGrid grid = new Grid(limitations, blocks);
 
-
-            //создали функции
             List<IFunction> functions = new List<IFunction>();
             foreach (string str in function_strings)
                 functions.Add(new Function(str, N));
-            //здесь - инициализация, запуск и обработка результатов алгоритма алгоритма
-            //points - лист точек
-            Algorthm Alg = new Algorthm(functions, grid.GetPoints());
-            var points = Alg.DoAlgorithm();
+
+            Algorthm Alg = new Algorthm(functions, new Grid(limitations, blocks).GetPoints());
+            var points = Alg.Run();
 
             resultsTextBox.Clear();
             foreach (IPoint point in points)
