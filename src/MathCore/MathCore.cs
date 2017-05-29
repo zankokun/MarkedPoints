@@ -9,8 +9,9 @@ namespace MathCore
     public interface IPoint
     {
         double GetPointOnAxis(int i);
-        bool NearTo(IPoint p);
-        List<double> Results { get; }
+        bool Equals(IPoint p);
+        void AddResult(double result);
+        double GetResult(int index);
         bool Mark { get; set; }
     }
 

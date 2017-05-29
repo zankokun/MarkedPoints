@@ -21,29 +21,30 @@ namespace MathCore
             return points_on_axes[i];
         }
 
-        public bool NearTo(IPoint p)
+        public bool Equals(IPoint p)
         {
             for (int i = 0; i < points_on_axes.Count; ++i)
-                if (points_on_axes[i] == p.GetPointOnAxis(i)) return true;
-            return false;
+                if (Math.Abs(points_on_axes[i] - p.GetPointOnAxis(i)) > Double.Epsilon) return false;
+            return true;
         }
-        public List<double> Results
+
+        public void AddResult(double result)
         {
-            get
-            {
-                return results_of_func;
-            }
+            results_of_func.Add(result);
         }
+        public double GetResult(int index)
+        {
+            if (results_of_func.Count < index) return -1;
+            return results_of_func[index];
+        }
+
         public bool Mark
         {
             get
             {
                 return mark;
             }
-            set
-            {
-                mark = value;
-            }
+            set => mark = value;
         }
     }
 }

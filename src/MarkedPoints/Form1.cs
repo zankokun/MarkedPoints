@@ -43,7 +43,7 @@ namespace MarkedPoints
             {
                 if (str == "") continue; // если есть пустые строки ограничений, не берем их в расчёт
                 temp = str.Split(' ');
-                limitations.Add(new AxisRange(double.Parse(temp.First<string>()), double.Parse(temp.Last<string>())));
+                limitations.Add(new AxisRange(double.Parse(temp.First()), double.Parse(temp.Last())));
                 ++N;
             }
 

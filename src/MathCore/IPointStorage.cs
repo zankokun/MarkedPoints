@@ -8,7 +8,7 @@ namespace MathCore
 {
     public interface IPointStorage
     {
-        void Add(IPoint point, List<AxisRange> axisRange);
+        void Add(List<AxisRange> axisRanges, IPoint point);
         List<IPoint> Get();
     }
 
@@ -26,7 +26,7 @@ namespace MathCore
             return points;
         }
 
-        public void Add(IPoint point, List<AxisRange> axisRange)
+        public void Add(List<AxisRange> axisRanges, IPoint point)
         {
             points.Add(point);
         }

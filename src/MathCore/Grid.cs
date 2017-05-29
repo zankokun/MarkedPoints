@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MathCore
 {
-    public class Grid<T> where T: IPointStorage
+    public class Grid<T> where T: IPointStorage, new()
     {
         List<AxisRange> limitations;
         T storage;
@@ -17,7 +17,7 @@ namespace MathCore
             this.blockCount = blockCount;
             pointCount = (int)Math.Pow(blockCount, limitations.Count);
 
-            storage = (T)Activator.CreateInstance(typeof(T));
+            storage = new T();
 
             var axisRanges = new List<AxisRange>();
             FillPoints(0, axisRanges, CreateCoords());
@@ -71,7 +71,7 @@ namespace MathCore
                 }
                 List<AxisRange> copyValues = new List<AxisRange>();
                 foreach (var val in values) copyValues.Add(val);
-                storage.Add(new Point(vector), copyValues);
+                storage.Add(copyValues, new Point(vector));
                 return;
             }
 
