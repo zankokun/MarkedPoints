@@ -91,9 +91,14 @@ namespace MathCore
             }
         }
 
-        public T GetStorage()
+        public List<IPoint> GetPoints()
         {
-            return storage;
+            return storage.Get();
         }
+    }
+
+    public class Grid : Grid<PointStorage>
+    {
+        public Grid(List<AxisRange> limitations, int blockCount) : base(limitations, blockCount) {}
     }
 }
