@@ -51,7 +51,7 @@ namespace MarkedPoints
             foreach (string str in function_strings)
                 functions.Add(new Function(str, N));
 
-            var grid = new Grid<PointStorage>(limitations, blockCount);
+            var grid = new Grid(limitations, blockCount);
             Algorthm Alg = new Algorthm(functions, grid.GetStorage().Get());
             var points = Alg.Run();
 

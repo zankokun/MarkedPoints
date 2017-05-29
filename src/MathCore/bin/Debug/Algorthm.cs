@@ -20,8 +20,8 @@ namespace MathCore
         {
             foreach (IPoint point in points)
                 foreach (IFunction func in functions)
-                    point.Results.Add(func.GetValue(point));
-            //сам метод
+                    point.AddResult(func.GetValue(point));
+
             IPoint current_point = points[0];
             while (true)
             {
@@ -30,10 +30,10 @@ namespace MathCore
                     int kolvo_b = 0, kolvo_m = 0;
                     if (current_point != points[i])
                     {
-                        for (int j = 0; j < current_point.Results.Count; j++)
+                        for (int j = 0; j < functions.Count; j++)
                         {
-                            if (current_point.Results[j] < points[i].Results[j]) kolvo_m++;
-                            if (current_point.Results[j] > points[i].Results[j]) kolvo_b++;
+                            if (current_point.GetResult(j) < points[i].GetResult(j)) kolvo_m++;
+                            if (current_point.GetResult(j) > points[i].GetResult(j)) kolvo_b++;
                         }
                         if (kolvo_b == 0)
                         {
