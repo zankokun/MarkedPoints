@@ -77,6 +77,8 @@
   <ItemGroup>
     <Compile Include="FunctionTest.cs" />
     <Compile Include="GridTests.cs" />
+    <Compile Include="GridTests.PointData.cs" />
+    <Compile Include="GridTests.PointDataStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

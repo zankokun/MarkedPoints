@@ -52,7 +52,7 @@ namespace MarkedPoints
                 functions.Add(new Function(str, N));
 
             var grid = new Grid(limitations, blockCount);
-            Algorthm Alg = new Algorthm(functions, grid.GetStorage().Get());
+            Algorthm Alg = new Algorthm(functions, grid.GetPoints());
             var points = Alg.Run();
 
             resultsTextBox.Clear();
