@@ -14,10 +14,11 @@ namespace MathCore
         {
             this.points_on_axes = axis;
             mark = false;
-            results_of_func = new List<double>();
+            results_of_func = new List<double>(points_on_axes.Count);
         }
         public double GetPointOnAxis(int i)
         {
+            if (points_on_axes.Count < i) return -1;
             return points_on_axes[i];
         }
 
