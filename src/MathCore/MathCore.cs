@@ -14,12 +14,6 @@ namespace MathCore
         bool Mark { get; set; }
     }
 
-    public interface IGrid
-    {
-        List<Block> GetBlocks();
-        List<IPoint> GetPoints();
-    }
-
     public interface IFunction
     {
         double GetValue(IPoint p);

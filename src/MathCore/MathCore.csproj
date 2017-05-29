@@ -68,8 +68,10 @@
     <Compile Include="Algorthm.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="AxisRange.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="Grid.cs" />
+    <Compile Include="IPointStorage.cs" />
     <Compile Include="MathCore.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
