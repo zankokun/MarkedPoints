@@ -34,7 +34,7 @@ namespace MarkedPoints
             //размерность 
             int N = 0; //пока не проверим все ограничения, не знаем скольки размерная задача
             //количество блоков разбиения
-            int blocksCount = Int32.Parse(tb_num_of_blocks.Text);
+            int blockCount = Int32.Parse(tb_num_of_blocks.Text);
 
             //создаem сетку
             var limitations = new List<AxisRange>();
@@ -51,7 +51,7 @@ namespace MarkedPoints
             foreach (string str in function_strings)
                 functions.Add(new Function(str, N));
 
-            var grid = new Grid<PointStorage>(limitations, blocksCount);
+            var grid = new Grid<PointStorage>(limitations, blockCount);
             Algorthm Alg = new Algorthm(functions, grid.GetStorage().Get());
             var points = Alg.Run();
 
