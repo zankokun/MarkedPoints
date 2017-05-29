@@ -31,5 +31,4 @@ namespace MathCore
             points.Add(point);
         }
     }
-
 }

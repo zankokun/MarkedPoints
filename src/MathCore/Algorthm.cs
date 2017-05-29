@@ -22,7 +22,6 @@ namespace MathCore
                 foreach (IFunction func in functions)
                     point.AddResult(func.GetValue(point));
 
-            //сам метод
             IPoint current_point = points[0];
             while (true)
             {
